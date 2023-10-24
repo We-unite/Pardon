@@ -1,0 +1,29 @@
+" Vundle插件管理及插件内容
+if filereadable(expand("/etc/vim/vimrcs/plugs.vim"))
+  source /etc/vim/vimrcs/plugs.vim
+endif
+
+" 自行设置
+if filereadable(expand("/etc/vim/vimrcs/myset.vim"))
+  source /etc/vim/vimrcs/myset.vim
+endif
+ 
+" 符号自动匹配
+if filereadable(expand("/etc/vim/vimrcs/match.vim"))
+  source /etc/vim/vimrcs/match.vim
+endif
+
+" 不知道是什么
+if filereadable(expand("/etc/vim/vimrcs/fuck.vim"))
+  source /etc/vim/vimrcs/fuck.vim
+endif
+
+" 自己设的快捷键
+if filereadable(expand("/etc/vim/vimrcs/keybind.vim"))
+  source /etc/vim/vimrcs/keybind.vim
+endif
+
+" 自动命令
+if filereadable(expand("/etc/vim/vimrcs/autocmd.vim"))
+  source /etc/vim/vimrcs/autocmd.vim
+endif
