@@ -51,7 +51,7 @@ function! GitBranch()
 endfunction
 
 set laststatus=2 "显示状态栏(默认值为 1，无法显示状态栏)
-set statusline=%f%m%r%h%w\ >\ %{GitBranch()}%=\ <\ %{&ff}\ <\ %y\ <\ %l,%v\ <\ %p%%\ <\ lines=%L
+set statusline=%f%m%r%h%w\ >\ %{GitBranch()}%=\ <\ %{&ff},\ %{&fenc}\ <\ %y\ <\ %l,%v\ <\ %p%%\ <\ lines=%L
 
 function! CurDir()
     let curdir = substitute(getcwd(), '/Users/amir/', "~/", "g")

@@ -1,21 +1,21 @@
 " Vundle插件管理器配置
-set nocompatible               "去除VIM一致性，必须
-filetype off                   "必须
+set nocompatible	"去除VIM一致性，必须
+filetype off		"必须
 
 "设置包括vundle和初始化相关的运行时路径"
 set rtp+=/home/player/useful/bundle/Vundle.vim
 call vundle#begin('/home/player/useful/bundle')
 
-Plugin 'VundleVim/Vundle.vim'                                                "启用vundle管理插件，必须
-Plugin 'Valloric/YouCompleteMe'                                              "代码补全插件
-Plugin 'preservim/nerdtree'                                                  "文件目录树插件
-Plugin 'Xuyuanp/nerdtree-git-plugin'                                         "nerdtree git支持
-Plugin 'skywind3000/vim-terminal-help'                                       "vim-terminal-help插件
-Plugin 'scrooloose/syntastic'                                                "语法检查插件
+Plugin 'VundleVim/Vundle.vim'		"启用vundle管理插件，必须
+Plugin 'Valloric/YouCompleteMe'		"代码补全插件
+Plugin 'preservim/nerdtree'		"文件目录树插件
+Plugin 'Xuyuanp/nerdtree-git-plugin'	"nerdtree git支持
+Plugin 'skywind3000/vim-terminal-help'	"vim-terminal-help插件
+Plugin 'scrooloose/syntastic'		"语法检查插件
 "Plugin 'Lokaltog/powerline',{'rtp':'powerline/bindings/vim/'}                "状态栏信息插件
-Plugin 'github/copilot.vim'                                                  "GitHub Copilot插件
-Plugin 'voldikss/vim-translator'                                             "翻译插件
-Plugin 'yegappan/taglist'                                                    "taglist插件
+Plugin 'github/copilot.vim'		"GitHub Copilot插件
+Plugin 'voldikss/vim-translator'	"翻译插件
+Plugin 'yegappan/taglist'		"taglist插件
 
 call vundle#end()
 filetype plugin indent on     "加载vim自带和插件相应的语法和文件类型相关脚本，必须
@@ -44,11 +44,10 @@ autocmd bufenter * if(winnr('$') ==1 && exists('b:NERDTree') && b:NERDTree.isTab
 nmap <F2> :NERDTreeToggle<CR>
 nmap T :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable  = '+'
-let g:NERDTreeDirArrowCollapsible = '-'                                        "修改树的显示图标
-"let g:NERDTreeWinPos='left'                                                   "窗口位置
-let g:NERDTreeSize=10                                                          "窗口尺寸
-let g:NERDTreeShowLineNumbers=1                                                "窗口是否显示行号
-"let g:NERDTreeHidden=1                                                        "似乎是隐藏文件的旧命令？没看到作用
+let g:NERDTreeDirArrowCollapsible = '-'	"修改树的显示图标
+let g:NERDTreeWinPos='left'		"窗口位置
+let g:NERDTreeSize=10			"窗口尺寸
+let g:NERDTreeShowLineNumbers=1		"窗口是否显示行号
 let NERDTreeShowHidden=1                                                       "显示隐藏文件
 let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__']   "过滤: 所有指定文件和文件夹不显示
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif "在每个标签页打开相同的文件树
@@ -109,13 +108,18 @@ nmap <silent> <Leader>x <Plug>TranslateX
 
 "进行Taglist的设置
 map <F3> :TlistToggle<CR>
-map <F3> :silent Tlist<CR>                   "按下F3就可以呼出了
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'    "因为我们放在环境变量里，所以可以直接执行
-let Tlist_Use_Right_Window=1                  "让窗口显示在右边，0的话就是显示在左边
-let Tlist_Show_One_File=0                     "让taglist可以同时展示多个文件的函数列表
-let Tlist_File_Fold_Auto_Close=0              "非当前文件列表折叠隐藏
+map <F3> :silent Tlist<CR>			" 按下F3就可以呼出了
+map <space>tl :silent Tlist<CR>			" 按下F3就可以呼出了
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'	"因为我们放在环境变量里，所以可以直接执行
+let Tlist_Use_Right_Window=1			"让窗口显示在右边，0的话就是显示在左边
+let Tlist_Show_One_File=0			"让taglist可以同时展示多个文件的函数列表
+let Tlist_File_Fold_Auto_Close=0		"非当前文件列表折叠隐藏
+let Tlist_Exit_OnlyWindow=1			"当taglist是最后一个分割窗口时，自动推出vim
+let Tlist_Process_File_Always=1			"是否一直处理tags.1:处理;0:不处理
+let Tlist_Inc_Winwidth=1			"不是一直实时更新tags，因为没有必要
+" 每隔多少秒更新一次tags，如果为0则不更新
+let Tlist_Update_Time=5
 " 在每个标签页打开相同的函数列表
 autocmd BufWinEnter * if getcmdwintype() == '' | silent TlistUpdate | endif
-let Tlist_Exit_OnlyWindow=1                   "当taglist是最后一个分割窗口时，自动推出vim
-let Tlist_Process_File_Always=0               "是否一直处理tags.1:处理;0:不处理
-let Tlist_Inc_Winwidth=1                      "不是一直实时更新tags，因为没有必要
+" 打开新标签页时自动打开函数列表
+autocmd BufWinEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.IsTabTree()) | silent TlistToggle | endif

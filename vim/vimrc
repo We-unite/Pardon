@@ -13,9 +13,9 @@ if filereadable(expand("/etc/vim/vimrcs/match.vim"))
   source /etc/vim/vimrcs/match.vim
 endif
 
-" 不知道是什么
-if filereadable(expand("/etc/vim/vimrcs/fuck.vim"))
-  source /etc/vim/vimrcs/fuck.vim
+" 状态栏与标签页设置
+if filereadable(expand("/etc/vim/vimrcs/statusline.vim"))
+  source /etc/vim/vimrcs/statusline.vim
 endif
 
 " 自己设的快捷键
@@ -23,7 +23,7 @@ if filereadable(expand("/etc/vim/vimrcs/keybind.vim"))
   source /etc/vim/vimrcs/keybind.vim
 endif
 
-" 自动命令
-if filereadable(expand("/etc/vim/vimrcs/autocmd.vim"))
-  source /etc/vim/vimrcs/autocmd.vim
+" 代码设置
+if filereadable(expand("/etc/vim/vimrcs/codecmd.vim"))
+  source /etc/vim/vimrcs/codecmd.vim
 endif
