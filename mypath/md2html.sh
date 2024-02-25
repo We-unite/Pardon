@@ -26,6 +26,6 @@ rm $src
 
 sed -i '/<style/,/<\/style>/d' $dst
 sed -i 's/<body>/<body>\n<div class="pandoc">\n<div class="main">/' $dst
-sed -i 's/<\/body>/<script src="https:\/\/www.qin-juan-ge-zhu.top\/common\/js\/comment.js"><\/script>\n<\/div>\n<\/div>\n<\/body>/' $dst
+sed -i 's/<\/body>/<script src="https:\/\/test.qin-juan-ge-zhu.top\/common\/js\/comment.js"><\/script>\n<\/div>\n<\/div>\n<\/body>/' $dst
 sed -i 's/\t/    /g' $dst
-sed -i 's/<\/head>/<link rel="stylesheet" href="https:\/\/www.qin-juan-ge-zhu.top\/common\/CSS\/pandoc.css">\n<script type="text\/javascript" src="https:\/\/www.qin-juan-ge-zhu.top\/common\/script4code.js"><\/script><\/head>/' $dst
+sed -i 's/<\/head>/<link rel="stylesheet" href="https:\/\/test.qin-juan-ge-zhu.top\/common\/CSS\/pandoc.css">\n<script type="text/javascript" src="https://test.qin-juan-ge-zhu.top/common/js/myhighlight.js"></script>\n<script type="text\/javascript" src="https:\/\/test.qin-juan-ge-zhu.top\/common\/script4code.js"><\/script><\/head>/' $dst

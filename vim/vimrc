@@ -1,29 +1,14 @@
-" Vundle插件管理及插件内容
-if filereadable(expand("/etc/vim/vimrcs/plugs.vim"))
-  source /etc/vim/vimrcs/plugs.vim
-endif
+set nocompatible " 关闭兼容模式
 
-" 自行设置
-if filereadable(expand("/etc/vim/vimrcs/myset.vim"))
-  source /etc/vim/vimrcs/myset.vim
-endif
- 
-" 符号自动匹配
-if filereadable(expand("/etc/vim/vimrcs/match.vim"))
-  source /etc/vim/vimrcs/match.vim
-endif
+let vimrcs = {
+			\ "plugs":			"Vundle插件管理及插件内容",
+			\ "statusline":		"状态栏与标签页设置",
+			\ "codecmd":		"代码设置",
+			\ "keybind":		"自己设的快捷键",
+			\ "match":			"符号自动匹配",
+			\ "myset":			"自行设置",
+			\ }
 
-" 状态栏与标签页设置
-if filereadable(expand("/etc/vim/vimrcs/statusline.vim"))
-  source /etc/vim/vimrcs/statusline.vim
-endif
-
-" 自己设的快捷键
-if filereadable(expand("/etc/vim/vimrcs/keybind.vim"))
-  source /etc/vim/vimrcs/keybind.vim
-endif
-
-" 代码设置
-if filereadable(expand("/etc/vim/vimrcs/codecmd.vim"))
-  source /etc/vim/vimrcs/codecmd.vim
-endif
+for vimrc in keys(vimrcs)
+	execute "source /etc/vim/vimrcs/".vimrc.".vim"
+endfor
