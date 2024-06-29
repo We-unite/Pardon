@@ -3,9 +3,9 @@ map H 0
 map J :<C-u>exe "normal! ".v:count1*10."j"<CR>
 map K :<C-u>exe "normal! ".v:count1*10."k"<CR>
 map L $
-nmap <leader>c <c-w><c-o>          "关闭除当前窗口的所有页面
+nmap <leader>c <c-w><c-o>			"关闭除当前窗口的所有页面
 nmap <c-s> :w !sudo tee %<cr>L<cr>
-nmap <leader>p <c-x><c-f>          "补全路径
+nmap <leader>p <c-x><c-f>			"补全路径
 " nmap <C-tab> :tabn<CR>
 nmap <tab> :tabp<CR>
 " nmap <alt-tab> :tabnew<CR>

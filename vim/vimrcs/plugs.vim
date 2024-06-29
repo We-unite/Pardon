@@ -53,7 +53,6 @@ let NERDTreeShowHidden=1                                                       "
 let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__']   " 过滤: 所有指定文件和文件夹不显示
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif " 在每个标签页打开相同的文件树
 
-
 " nerdtree-git-plugin
 let g:NERDTreeGitStatusIndicatorMapCustom = {
 			\ 'Dirty'     :'Dty',
@@ -115,7 +114,7 @@ map <F3> :silent Tlist<CR>					" 按下F3就可以呼出了
 map <space>tl :silent Tlist<CR>				" 按下<space>tl就可以呼出了
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'	" 因为我们放在环境变量里，所以可以直接执行
 let Tlist_Use_Right_Window=1				" 让窗口显示在右边，0的话就是显示在左边
-let Tlist_Show_One_File=0					" 让taglist可以同时展示多个文件的函数列表
+let Tlist_Show_One_File=1					" 让taglist可以同时展示多个文件的函数列表
 let Tlist_File_Fold_Auto_Close=0			" 非当前文件列表折叠隐藏
 let Tlist_Exit_OnlyWindow=1					" 当taglist是最后一个分割窗口时，自动推出vim
 let Tlist_Process_File_Always=1				" 是否一直处理tags.1:处理;0:不处理

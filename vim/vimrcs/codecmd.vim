@@ -5,9 +5,10 @@ set softtabstop=4
 autocmd FileType asm,nasm,vim,sh,makefile set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
 set showmatch			" 在输入括号时光标会短暂地跳到与之相匹配的括号处
-set wrap				" 设置自动折行
+set nowrap				" 设置自动折行
+
 set textwidth=500		" 设置自动换行的长度
-set lbr
+set lbr					" 设置自动换行
 set foldmethod=syntax	" 设置按语法折叠代码
 set nofoldenable		" 在打开文件时不要折叠
 
@@ -21,12 +22,12 @@ autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 " 要求格式化之后的代码不要移动光标，并且不要删除换行符和空行，保留原来的视图
-autocmd BufReadPost,BufWritePre *.html,*.vim normal! g1G=G`"z<CR>
+autocmd BufReadPost,BufWritePre *.html,*.vim,*.sh,*.py normal! g1G=G`"z<CR>
 " 在保存时自动使用clang-format格式化代码
 augroup FormatAutocmd
 	autocmd!
-	autocmd BufWritePre *.c,*.cpp,*.h :normal! ggVG
 	autocmd BufWritePre *.c,*.cpp,*.h :let save_cursor = getpos(".")
+	autocmd BufWritePre *.c,*.cpp,*.h :normal! ggVG
 	autocmd BufWritePre *.c,*.cpp,*.h :ClangFormat
 	autocmd BufWritePost *.c,*.cpp,*.h :call setpos('.', save_cursor)
 augroup END

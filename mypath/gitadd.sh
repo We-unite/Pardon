@@ -1,45 +1,27 @@
 #!/bin/bash
 
-read -p "Local repo name: " local_name
-read -p "Remote repo name: " remote_name
+##########################################################################
+# File Name    : gitadd.sh
+# Encoding     : utf-8
+# Author       : We-unite
+# Email        : weunite1848@gmail.com
+# Created Time : 2024-03-21 19:26:53
+##########################################################################
 
-# 远程仓库创建
-tmp="ssh aliyun-git git init --bare $remote_name.git"
-eval "$tmp"
+set -e
 
-# 本地仓库创建
-mkdir "$local_name"
-cd "$local_name"
-git init
+repo_name=""
+# 判断参数个数
+if [ $# -ne 1 ]; then
+	echo "Input repository name: "
+	read name
+	repo_name=$name
+else
+	repo_name=$1
+fi
 
-# 本地仓库初始化
-# 编写.gitignore
-cat > .gitignore << EOF
-*.sh
-*.bat
-*.exe
-*.[oa]
-*.pyc
-__pycache__
-*.vscode
-*.swp
-EOF
-
-# 编写push.sh
-cat > push.sh << EOF
-git add .
-git commit
-git push
-EOF
-chmod +x push.sh
-
-# 提交初始化commit
-git add .
-git commit -m "Initial commit"
-tmp="git remote add origin aliyun-git:$remote_name.git"
-eval "$tmp"
-git push --set-upstream origin master
-git push
-
-echo "Success!"
-
+sudo -u git -H bash -c "cd ~ && git init --bare $repo_name.git"
+echo "Input description for the repository:"
+read desc
+sudo -u git -H bash -c "echo $desc > ~/$repo_name.git/description"
+echo "Repository $1.git created successfully!"
